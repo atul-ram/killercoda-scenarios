@@ -1,0 +1,25 @@
+{
+  "items": [
+    { "path": "pods"},
+    { "path": "labels_and_selectors"},
+    { "path": "replica_sets" },
+    { "path": "environment_variables"},
+    { "path": "volumes"},
+    { "path": "configmaps"},
+    { "path": "secrets"},
+    { "path": "security_context"},
+    { "path": "resource_quota"},
+    { "path": "resource_limitrange"},
+    { "path": "resource_requests"},
+    { "path": "node_selector"},
+    { "path": "taint_and_tolerations"},
+    { "path": "node_affinity"},
+    { "path": "multi_container_pods"},
+    { "path": "init_containers"},
+    { "path": "readiness_and_liveness_probe"},
+    { "path": "logging_and_debugging"},
+    { "path": "deployment"},
+    { "path": "deployment_types"},
+    { "path": "services"}
+  ]
+}
