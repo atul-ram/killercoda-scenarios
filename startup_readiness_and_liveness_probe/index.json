@@ -1,0 +1,18 @@
+{
+  "title": "startup , Readiness and Liveness Probe",
+  "description": "Set Startup, Liveness & Readiness checks on containers",
+  "details": {
+    "intro": {
+      "text": "start.md"
+    },
+    "steps": [
+      {
+        "title": "All probes Probe",
+        "text": "step1/text.md"
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
