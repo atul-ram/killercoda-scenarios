@@ -16,10 +16,7 @@
         "text": "step-2/text.md",
         "verify": "step-2/verify.sh"
       }
-    ],
-    "finish": {
-      "text": "finish.md"
-    }
+    ]
   },
   "backend": {
     "imageid": "kubernetes-kubeadm-2nodes"
