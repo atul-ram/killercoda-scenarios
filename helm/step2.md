@@ -5,10 +5,16 @@ The chart has the following structure. It contains many things we have learned.
 
 <br><br><br>
 
-Installation is simple. Just one command. （°o°；）
+Installation is simple. Just one command. 
 ```bash 
-controlplane $ helm install my-todo-app https://github.com/JungSangup/mspt3/raw/main/hands_on_files/todo-app-1.0.0.tgz NAME: my-todo-app LAST DEPLOYED: Sat Mar 4 08:13:33 2023 NAMESPACE: default STATUS: deployed REVISION: 1 TEST SUITE: None NOTES: 1. Get the application URL by running these commands: http://todo-app.info/ ``` > 💻 Command `helm install my-todo-app https://github.com/JungSangup/mspt3/raw/main/hands_on_files/todo-app-1.0.0.tgz`{{exec}} <br> The above method uses Helm. This was installed by directly specifying the URL of the chart package file (the file uploaded to GitHub).
+controlplane $ helm install my-todo-app https://github.com/JungSangup/mspt3/raw/main/hands_on_files/todo-app-1.0.0.tgz NAME: my-todo-app LAST DEPLOYED: Sat Mar 4 08:13:33 2023 NAMESPACE: default STATUS: deployed REVISION: 1 TEST SUITE: None NOTES: 1. Get the application URL by running these commands: http://todo-app.info/ 
+```
+
+ > 💻 Command `helm install my-todo-app https://github.com/JungSangup/mspt3/raw/main/hands_on_files/todo-app-1.0.0.tgz`{{exec}} 
+ 
+ <br> The above method uses Helm. This was installed by directly specifying the URL of the chart package file (the file uploaded to GitHub).
 In addition to the method above, there are various other ways to install it.
+
 > - `helm install my-todo-app ./todo-app-1.0.0.tgz` -> tgz file in the local path (packaged Helm chart)
 > - `helm install my-todo-app ./todo-app` -> chart directory in the local path
 
@@ -40,7 +46,10 @@ We will use the image uploaded to your **Docker private repository** and use **c
 
 You can also run it simply as follows. 
 ```bash 
-controlplane $ helm install my-todo-app \ > --set image.repository=rogallo/todo-app \ > --set imageCredentials.create=true \ > --set imageCredentials.username=rogallo \ > --set imageCredentials.password=XXXXXX \ > https://github.com/JungSangup/mspt3/raw/main/hands_on_files/todo-app-1.0.0.t gz NAME: my-todo-app LAST DEPLOYED: Sat Mar 4 08:21:31 2023 NAMESPACE: default STATUS: deployed REVISION: 1 TEST SUITE: None NOTES: 1. Get the application URL by running these commands: http://todo-app.info/ ``` > 💻 Command
+controlplane $ helm install my-todo-app \ > --set image.repository=rogallo/todo-app \ > --set imageCredentials.create=true \ > --set imageCredentials.username=rogallo \ > --set imageCredentials.password=XXXXXX \ > https://github.com/JungSangup/mspt3/raw/main/hands_on_files/todo-app-1.0.0.t gz NAME: my-todo-app LAST DEPLOYED: Sat Mar 4 08:21:31 2023 NAMESPACE: default STATUS: deployed REVISION: 1 TEST SUITE: None NOTES: 1. Get the application URL by running these commands: http://todo-app.info/ 
+``` 
+
+> 💻 Command
 >```bash
 >helm install my-todo-app \
 > --set image.repository=[USER-NAME]/todo-app \
@@ -71,9 +80,6 @@ Is it working?
 <br><br><br>
 
 Check the created K8s resources. 
-```bash 
-controlplane $ kubectl get all NAME READY STATUS RESTARTS AGE pod/my-todo-app-fb4d789b8-dsspx 1/1 Running 0 82s pod/my-todo-app-mysql-86bd7f5bc8-5h7dq 1/1 Running 0 82s NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S ) AGE service/kubernetes ClusterIP 10.96.0.1 <none> 443/TCP 8d service/my-todo-app NodePort 10.110.253.129 <none> 3000:30007/TCP 82s service/my-todo-app-mysql ClusterIP 10.108.6.251 <none> 3306/TCP 82s NAME READY UP-TO-DATE AVAILABLE AGE deployment.apps/my-todo-app 1/1 1 1 82s deployment.apps/my-todo-app-mysql 1/1 1 1 82s NAME DESIRED CURRENT READY AGE replicaset.apps/my-todo-app-fb4d789b8 1 1 82s replicaset.apps/my-todo-app-mysql-86bd7f5bc8 1 1 1 82s NAME REFERENCE TARGETS MINPODS MAXPODS REPLICAS AGE horizontalpodautoscaler.autoscaling/my-todo-app Deployment/my-todo-app <unknown>/80% 1 10 1 82s
-```
 
 > 💻 Command `kubectl get all`{{exec}}
 

@@ -38,7 +38,7 @@ Available Commands:
   create      create a new chart with the given name
   dependency  manage a chart's dependencies
 
-...생략...
+...ommited...
 
 Use "helm [command] --help" for more information about a command.
 ```
@@ -116,7 +116,7 @@ bitnami/wordpress-intel 2.1.31          6.1.1           DEPRECATED WordPress for
 
 <br><br><br>
 
-다음은 `helm pull` Command 입니다.  
+Here is the `helm pull` Command.
 This is a command to download (pull) the Helm chart registered in the **Helm repository**.
 ```bash
 controlplane $ helm pull bitnami/wordpress 
@@ -484,3 +484,9 @@ controlplane $
 ```
 
 > 💻 Command `helm list`{{exec}}
+
+Then start kubectl forward:
+
+```plain
+kubectl port-forward --address 0.0.0.0 service/nginx 80:80
+```{{exec}}
