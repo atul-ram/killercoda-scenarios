@@ -1,0 +1,33 @@
+{
+  "title": "Helm",
+  "description": "Helm",
+  "difficulty": "beginner",
+  "time": "10 minutes",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },    
+    "steps": [
+		  {
+		    "title": "Step 1 - Helm",
+		    "text": "step1.md"
+		  },
+      {
+		    "title": "Step 2 - ToDo App.",
+		    "text": "step2.md"
+		  },
+      {
+		    "title": "Step 3 - Deploy ToDo App.",
+		    "text": "step3.md"
+		  }
+	  ],
+    "assets": {
+        "host01": [
+            {"file": "todo-app-1.0.0.tgz", "target": "~/lab"}
+        ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
