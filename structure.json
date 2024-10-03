@@ -22,6 +22,11 @@
     { "path": "deployment"},
     { "path": "deployment_types"},
     { "path": "services"},
-    { "path": "startup,readiness_and_liveness_probe"}
+    { "path": "startup,readiness_and_liveness_probe"},
+    {
+      "path": "helm",
+      "title": "Helm",
+      "description": "Helm "
+    }
   ]
 }
