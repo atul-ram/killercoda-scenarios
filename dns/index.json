@@ -15,9 +15,7 @@
   },
     "assets": {
         "host01": [
-            {"file": "busybox-deployment-b.yaml", "target": "~/lab"},
-            {"file": "mc1-deployment.yaml", "target": "~/lab"},
-            {"file": "mc1-service.yaml", "target": "~/lab"}
+            {"file": "*", "target": "~/lab"}
         ]
     },
   "backend": {
