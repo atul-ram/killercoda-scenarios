@@ -3,21 +3,16 @@
   "description": "service discovery",
   "details": {
     "intro": {
-      "text": "start.md"
+      "text": "start.md",
+      "background": "background.sh"
     },
     "steps": [
       {
         "title": "steps",
-        "text": "step1/text.md",
-        "verify": ""
+        "text": "step1/text.md"
       }
     ]
   },
-    "assets": {
-        "host01": [
-            {"file": "busybox-deployment-b.yaml", "target": "~/lab", "chmod": "+w"}
-        ]
-    },
   "backend": {
     "imageid": "kubernetes-kubeadm-2nodes"
   }
