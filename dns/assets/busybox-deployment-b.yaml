@@ -21,7 +21,7 @@ spec:
             - -c
             - |
               while true; do
-                wget -qO- http://mc1.namespace-a.svc.cluster.local;
+                wget -qO- http://mc1-service-a.namespace-a.svc.cluster.local;
                 sleep 10;
               done
           resources:
