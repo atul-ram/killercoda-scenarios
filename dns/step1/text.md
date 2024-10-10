@@ -73,7 +73,7 @@ nslookup mc1-service-a.namespace-a.svc.cluster.local
 
 You should see the DNS resolution output with the IP address of the service.
 
-![alt text](image.png)
+![alt text](../assets/image.png)
 
 ### Step 5: Check another command for Communication Verification
 
