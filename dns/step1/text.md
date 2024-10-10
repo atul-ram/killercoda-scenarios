@@ -39,33 +39,39 @@ You can test DNS resolution by running commands directly in the pod. Here’s ho
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-  name: mc1-deployment
-  namespace: namespace-a
+    name: mc1-deployment
+    namespace: namespace-a
   spec:
-  replicas: 1
-  selector:
-  matchLabels:
-  app: mc1
-  template:
-  metadata:
-  labels:
-  app: mc1
-  spec:
-  volumes: - name: html
-  emptyDir: {}
-  containers: - name: 1st
-  image: nginx
-  volumeMounts: - name: html
-  mountPath: /usr/share/nginx/html - name: 2nd
-  image: debian
-  volumeMounts: - name: html
-  mountPath: /html
-  command: ["/bin/sh", "-c"]
-  args: - while true; do
-  echo "Hello from 2nd container in deployment mc1" >> /html/index.html;
-  date >> /html/index.html;
-  sleep 1;
-  done
+    replicas: 1
+    selector:
+      matchLabels:
+        app: mc1
+    template:
+      metadata:
+        labels:
+          app: mc1
+      spec:
+        volumes:
+          - name: html
+            emptyDir: {}
+        containers:
+          - name: 1st
+            image: nginx
+            volumeMounts:
+              - name: html
+                mountPath: /usr/share/nginx/html
+          - name: 2nd
+            image: debian
+            volumeMounts:
+              - name: html
+                mountPath: /html
+            command: ["/bin/sh", "-c"]
+            args:
+              - while true; do
+                  echo "Hello from 2nd container in deployment mc1" >> /html/index.html;
+                  date >> /html/index.html;
+                  sleep 1;
+                done
 ```
 
 Apply the deployment:
