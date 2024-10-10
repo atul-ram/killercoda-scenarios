@@ -13,7 +13,7 @@ First, create two namespaces: namespace-a and namespace-b.
 ```bash
 kubectl create namespace namespace-a
 kubectl create namespace namespace-b
-```
+```{{exec}}
 
 ### Step 2: Verify the Cluster DNS Add-on
 
@@ -23,7 +23,7 @@ Check if the DNS pods are running:
 
 ```bash
 kubectl get pods -n kube-system -l k8s-app=kube-dns
-```
+```{{exec}}
 
 ### Step 3: Create and Configure Services
 
@@ -39,7 +39,7 @@ Apply the deployment:
 
 ```bash
 kubectl apply -f ~lab/mc1-deployment.yaml
-```
+```{{exec}}
 
 1. **Deploy the Service for BusyBox in `namespace-a`**:
 
@@ -48,7 +48,7 @@ Apply the service:
 
 ```bash
 kubectl apply -f ~lab/mc1-service.yaml
-```
+```{{exec}}
 
 2. **Deploy the BusyBox Pod in `namespace-b` to Communicate with `namespace-a`**:
 
@@ -57,7 +57,7 @@ Apply the deployment:
 
 ```bash
 kubectl apply -f ~lab/busybox-deployment-b.yaml
-```
+```{{exec}}
 
 3. **Test DNS Resolution by Executing into the Pod in `namespace-b`**:
 
