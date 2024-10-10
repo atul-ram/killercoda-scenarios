@@ -15,7 +15,7 @@
   },
     "assets": {
         "host01": [
-            {"file": "busybox-deployment-b.yaml", "target": "/lab", "chmod": "+w"}
+            {"file": "busybox-deployment-b.yaml", "target": "~/lab", "chmod": "+w"}
         ]
     },
   "backend": {
