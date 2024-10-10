@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mc1-service-a
+  namespace: namespace-a
+spec:
+  selector:
+    app: mc1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

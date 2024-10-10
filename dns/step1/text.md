@@ -35,102 +35,28 @@ You can test DNS resolution by running commands directly in the pod. Here’s ho
 
 1. **Deploy the BusyBox Pod in `namespace-a` with HTTP Server**:
 
-```yaml
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: mc1-deployment
-    namespace: namespace-a
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
-        app: mc1
-    template:
-      metadata:
-        labels:
-          app: mc1
-      spec:
-        volumes:
-          - name: html
-            emptyDir: {}
-        containers:
-          - name: 1st
-            image: nginx
-            volumeMounts:
-              - name: html
-                mountPath: /usr/share/nginx/html
-          - name: 2nd
-            image: debian
-            volumeMounts:
-              - name: html
-                mountPath: /html
-            command: ["/bin/sh", "-c"]
-            args:
-              - while true; do
-                  echo "Hello from 2nd container in deployment mc1" >> /html/index.html;
-                  date >> /html/index.html;
-                  sleep 1;
-                done
-```
-
 Apply the deployment:
 
 ```bash
-kubectl apply -f busybox-deployment-a.yaml
+kubectl apply -f assets/mc1-deployment.yaml
 ```
 
 1. **Deploy the Service for BusyBox in `namespace-a`**:
 
-```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: mc1-service-a
-      namespace: namespace-a
-    spec:
-      selector:
-        app: mc1
-      ports:
-        - protocol: TCP
-          port: 80
-          targetPort: 80
-```
 
 Apply the service:
 
 ```bash
-kubectl apply -f busybox-service-a.yaml
+kubectl apply -f assets/mc1-service.yaml
 ```
 
 2. **Deploy the BusyBox Pod in `namespace-b` to Communicate with `namespace-a`**:
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: busybox-deployment-b
-  namespace: namespace-b
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: busybox-b
-  template:
-    metadata:
-      labels:
-        app: busybox-b
-    spec:
-      containers:
-      - name: busybox
-        image: busybox
-        command: ['sh', '-c', 'while true; do wget -qO- http://mc1-service-a.namespace-a.svc.cluster.local; sleep 10; done']
-```
 
 Apply the deployment:
 
 ```bash
-kubectl apply -f busybox-deployment-b.yaml
+kubectl apply -f assets/busybox-deployment-b.yaml
 ```
 
 3. **Test DNS Resolution by Executing into the Pod in `namespace-b`**:
