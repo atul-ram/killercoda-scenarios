@@ -38,7 +38,7 @@ You can test DNS resolution by running commands directly in the pod. Here’s ho
 Apply the deployment:
 
 ```bash
-kubectl apply -f assets/mc1-deployment.yaml
+kubectl apply -f ~lab/mc1-deployment.yaml
 ```
 
 1. **Deploy the Service for BusyBox in `namespace-a`**:
@@ -47,7 +47,7 @@ kubectl apply -f assets/mc1-deployment.yaml
 Apply the service:
 
 ```bash
-kubectl apply -f assets/mc1-service.yaml
+kubectl apply -f ~lab/mc1-service.yaml
 ```
 
 2. **Deploy the BusyBox Pod in `namespace-b` to Communicate with `namespace-a`**:
@@ -56,7 +56,7 @@ kubectl apply -f assets/mc1-service.yaml
 Apply the deployment:
 
 ```bash
-kubectl apply -f assets/busybox-deployment-b.yaml
+kubectl apply -f ~lab/busybox-deployment-b.yaml
 ```
 
 3. **Test DNS Resolution by Executing into the Pod in `namespace-b`**:
