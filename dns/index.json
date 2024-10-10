@@ -15,7 +15,7 @@
   },
     "assets": {
         "host01": [
-            {"file": "*", "target": "~/lab"}
+            {"file": "*", "target": "~/", "chmod": "+w"}
         ]
     },
   "backend": {
