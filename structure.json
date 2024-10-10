@@ -1,5 +1,6 @@
 {
   "items": [
+    { "path": "dns", "title": "Lab-00: Service discovery", "description": "Pods can communicate internally in different namespace" },
     { "path": "pods", "title": "Lab-01: Pods", "description": "Kubernetes Pods" },
     { "path": "labels_and_selectors", "title": "Lab-02: Labels and Selectors", "description": "Kubernetes Labels and Selectors" },
     { "path": "replica_sets", "title": "Lab-03: Replica Sets", "description": "Kubernetes Replica Sets" },

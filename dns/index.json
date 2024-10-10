@@ -1,0 +1,19 @@
+{
+  "title": "service discovery",
+  "description": "service discovery",
+  "details": {
+    "intro": {
+      "text": "start.md"
+    },
+    "steps": [
+      {
+        "title": "steps",
+        "text": "step1/text.md",
+        "verify": ""
+      }
+    ]
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
