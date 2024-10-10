@@ -1,4 +1,4 @@
-*## steps to test the scenario
+## steps to test the scenario
 
 Below are the detailed steps to ensure your pod can communicate using DNS within a Kubernetes cluster:
 
@@ -33,44 +33,44 @@ You can test DNS resolution by running commands directly in the pod. Here’s ho
 
 1. **Deploy the BusyBox Pod in `namespace-a` with HTTP Server**:
 
-  ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-    name: mc1-deployment
-    namespace: namespace-a
-    spec:
-    replicas: 1
-    selector:
-    matchLabels:
-    app: mc1
-    template:
-    metadata:
-    labels:
-    app: mc1
-    spec:
-    volumes: - name: html
-    emptyDir: {}
-    containers: - name: 1st
-    image: nginx
-    volumeMounts: - name: html
-    mountPath: /usr/share/nginx/html - name: 2nd
-    image: debian
-    volumeMounts: - name: html
-    mountPath: /html
-    command: ["/bin/sh", "-c"]
-    args: - while true; do
-    echo "Hello from 2nd container in deployment mc1" >> /html/index.html;
-    date >> /html/index.html;
-    sleep 1;
-    done
-  ```
+```yaml
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+  name: mc1-deployment
+  namespace: namespace-a
+  spec:
+  replicas: 1
+  selector:
+  matchLabels:
+  app: mc1
+  template:
+  metadata:
+  labels:
+  app: mc1
+  spec:
+  volumes: - name: html
+  emptyDir: {}
+  containers: - name: 1st
+  image: nginx
+  volumeMounts: - name: html
+  mountPath: /usr/share/nginx/html - name: 2nd
+  image: debian
+  volumeMounts: - name: html
+  mountPath: /html
+  command: ["/bin/sh", "-c"]
+  args: - while true; do
+  echo "Hello from 2nd container in deployment mc1" >> /html/index.html;
+  date >> /html/index.html;
+  sleep 1;
+  done
+```
 
 Apply the deployment:
 
-````bash
+```bash
 kubectl apply -f busybox-deployment-a.yaml
-    ```
+```
 
 1. **Deploy the Service for BusyBox in `namespace-a`**:
 
@@ -88,6 +88,7 @@ kubectl apply -f busybox-deployment-a.yaml
           port: 80
           targetPort: 80
 ```
+
 Apply the service:
 
 ```bash
@@ -118,7 +119,7 @@ spec:
         command: ['sh', '-c', 'while true; do wget -qO- http://mc1-service-a.namespace-a.svc.cluster.local; sleep 10; done']
 ```
 
-    Apply the deployment:
+Apply the deployment:
 
 ```bash
 kubectl apply -f busybox-deployment-b.yaml
@@ -130,14 +131,15 @@ kubectl apply -f busybox-deployment-b.yaml
 kubectl exec -it <pod-name> -n namespace-b -- sh
 ```
 
-    Inside the pod, test DNS resolution:
+Inside the pod, test DNS resolution:
 
 ```sh
 nslookup mc1-service-a.namespace-a.svc.cluster.local
 ```
-    You should see the DNS resolution output with the IP address of the service.
-![alt text](image.png)
 
+You should see the DNS resolution output with the IP address of the service.
+
+![alt text](image.png)
 
 ### Step 5: Check another command for Communication Verification
 
@@ -150,4 +152,3 @@ Finally, check the output of command below to verify communication:
 you should see message printed in html page.
 
 By following these steps, you ensure that your pod image is capable of DNS communication within a Kubernetes cluster, and you verify that the DNS resolution is working correctly.
-*
