@@ -1,7 +1,9 @@
 
-Exec /my/location/assets-install.sh {{exec}}
 
 
+```
+kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/prometheus.yaml 
+```{{ exec }}
 
 There are two deployments installed in the Kubernetes cluster:
 - notification-service-v1
