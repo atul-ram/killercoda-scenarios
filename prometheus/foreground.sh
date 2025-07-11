@@ -10,7 +10,9 @@ kubectl get pod -n default
 kubectl wait --for=condition=ready --timeout=30s pod --all -n default
 
 kubectl wait --for=condition=ready --timeout=30s pod --all -n default
+sleep 5
 kubectl wait --for=condition=ready --timeout=30s pod --all -n default
+sleep 5
 kubectl wait --for=condition=ready --timeout=30s pod --all -n default
 kubectl wait --for=condition=ready --timeout=30s pod --all -n default
 
