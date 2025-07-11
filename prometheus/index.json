@@ -1,0 +1,31 @@
+{
+    "title": "Monitoring Kubernetes with Prometheus",
+    "description": "Setup monitoring rules for Kubernetes in Prometheus",
+    "details": {
+        "intro": {
+            "text": "intro.md"
+        },
+        "steps": [
+            {
+                "title": "Access Prometheus Dashboard",
+                "text": "step1.md",
+                "foreground": "foreground.sh",
+                "background": "background.sh"
+            },
+            {
+                "title": "Create Prometheus Rules",
+                "text": "step2.md"
+            },
+            {
+                "title": "Alerts in Alertmanager",
+                "text": "step3.md"
+            }
+        ],
+        "finish": {
+            "text": "finish.md"
+        }
+    },
+    "backend": {
+        "imageid": "kubernetes-kubeadm-2nodes-rapid"
+    }
+}
