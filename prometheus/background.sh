@@ -20,9 +20,9 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
 # helm install node-exporter prometheus-community/prometheus-node-exporter
 # helm install node-exporter prometheus-community/prometheus-node-exporter --set service.targetPort=9101 --set service.port=9101
 
- sleep 30
+# sleep 30
 
- kubectl patch svc prometheus-grafana -p '{"spec": {"type": "NodePort", "ports": [{"port": 80, "nodePort": 30000}]}}'
+# kubectl patch svc prometheus-grafana -p '{"spec": {"type": "NodePort", "ports": [{"port": 80, "nodePort": 30000}]}}'
 
 
 # cat <<EOF | kubectl apply -f -
