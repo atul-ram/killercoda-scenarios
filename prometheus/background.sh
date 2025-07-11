@@ -3,10 +3,11 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 
 helm install prometheus prometheus-community/kube-prometheus-stack \
-  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
-  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].key=k8s-app \
-  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].operator=Exists \
-  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].values[0]=kube-prometheus-stack-prometheus-node-exporter
+    --set crds.upgrade=true #\
+#  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
+#  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].key=k8s-app \
+#  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].operator=Exists \
+#  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].values[0]=kube-prometheus-stack-prometheus-node-exporter
 
 #prometheus -f https://raw.githubusercontent.com/chadmcrowell/k8s/main/prometheus/values.yaml
 
