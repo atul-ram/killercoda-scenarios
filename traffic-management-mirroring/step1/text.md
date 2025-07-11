@@ -19,6 +19,10 @@ kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios
 kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/kiali.yaml
 ```{{ exec }}
 
+```
+kubectl -n istio-system get svc
+```{{ exec}}
+
 
 There are two deployments installed in the Kubernetes cluster:
 - notification-service-v1
