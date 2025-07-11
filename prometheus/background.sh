@@ -3,7 +3,8 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 
 helm install prometheus prometheus-community/kube-prometheus-stack \
-    --set crds.upgrade=true #\
+    --set crds.upgrade=true \
+    --set prometheus.service.type=NodePort #\
 #  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
 #  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].key=k8s-app \
 #  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].operator=Exists \
