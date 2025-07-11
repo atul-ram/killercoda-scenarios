@@ -21,6 +21,10 @@ kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios
 
 ```
 kubectl -n istio-system get svc
+kubectl -n istio-system delete svc kiali
+kubectl -n istio-system expose pod $(kubectl -n istio-system get pod -l app.kubernetes.io/name=kiali -o jsonpath='{.items[*].metadata.name}') --type=NodePort --name=kialiport --target-port=20001 --port=20001
+
+
 ```{{ exec}}
 
 
