@@ -4,7 +4,9 @@ helm repo update
 
 helm install prometheus prometheus-community/kube-prometheus-stack \
     --set crds.upgrade=true \
-    --set prometheus.service.type=NodePort
+    --set prometheus.service.type=NodePort \
+    --set grafana.adminPassword=a \
+    --set grafana.adminUser=a
 
 sleep 2
 kubectl wait --for=condition=ready  pod --all -n default
