@@ -1,14 +1,19 @@
 
 
+# configure prom
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/prometheus.yaml 
 ```{{ exec }}
 
+# configure grafana
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/grafana.yaml
 ```{{ exec }}
+
+
+# configure kiali
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/kiali.yaml
