@@ -9,6 +9,9 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
 sleep 2
 kubectl wait --for=condition=ready  pod --all -n default
 
+kubectl patch svc prometheus-grafana -p '{"spec": {"type": "NodePort", "ports": [{"port": 80, "nodePort": 30000}]}}'
+
+
 #  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
 #  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].key=k8s-app \
 #  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].operator=Exists \
