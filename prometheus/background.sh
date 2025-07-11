@@ -4,7 +4,12 @@ helm repo update
 
 helm install prometheus prometheus-community/kube-prometheus-stack \
     --set crds.upgrade=true \
-    --set prometheus.service.type=NodePort #\
+    --set prometheus.service.type=NodePort \
+    --set alertmanager.service.type=NodePort \
+
+
+
+
 #  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
 #  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].key=k8s-app \
 #  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].operator=Exists \
@@ -15,9 +20,9 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
 # helm install node-exporter prometheus-community/prometheus-node-exporter
 # helm install node-exporter prometheus-community/prometheus-node-exporter --set service.targetPort=9101 --set service.port=9101
 
-# sleep 30
+ sleep 30
 
-# kubectl patch svc prometheus-server -p '{"spec": {"type": "NodePort", "ports": [{"port": 80, "nodePort": 30000}]}}'
+ kubectl patch svc prometheus-grafana -p '{"spec": {"type": "NodePort", "ports": [{"port": 80, "nodePort": 30000}]}}'
 
 
 # cat <<EOF | kubectl apply -f -
