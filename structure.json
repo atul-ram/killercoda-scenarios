@@ -134,6 +134,11 @@
       "path": "traffic-management-mirroring",
       "title": "Lab-27: Istio Traffic Management Mirroring",
       "description": "Kubernetes Istio Traffic Management Mirroring"
+    },
+    {
+      "path": "istio-lab-mtls",
+      "title": "Lab-28: Istio Mutual TLS",
+      "description": "Kubernetes Istio Mutual TLS"
     }
   ]
 }
