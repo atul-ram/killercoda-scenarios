@@ -33,3 +33,5 @@ clear
 echo "Scenario is ready"
 
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.26/samples/addons/kiali.yaml
+
+kubectl -n istio-system  patch svc kiali -p '{"spec": {"type": "NodePort", "ports": [{"port": 20001, "nodePort": 30000}]}}'
