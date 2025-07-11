@@ -27,6 +27,13 @@ kubectl -n istio-system expose pod $(kubectl -n istio-system get pod -l app.kube
 
 ```{{ exec}}
 
+# configure jaeger
+
+```
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/jaeger.yaml
+
+```{{ exec}}
+
 
 There are two deployments installed in the Kubernetes cluster:
 - notification-service-v1
