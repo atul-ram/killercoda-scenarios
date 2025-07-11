@@ -4,9 +4,7 @@ helm repo update
 
 helm install prometheus prometheus-community/kube-prometheus-stack \
     --set crds.upgrade=true \
-    --set prometheus.service.type=NodePort \
-    --set alertmanager.service.type=NodePort \
-
+    --set prometheus.service.type=NodePort
 
 
 
