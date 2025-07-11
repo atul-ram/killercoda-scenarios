@@ -6,7 +6,8 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
     --set crds.upgrade=true \
     --set prometheus.service.type=NodePort
 
-
+sleep 2
+kubectl wait --for=condition=ready  pod --all -n default
 
 #  --set prometheus.prometheusSpec.serviceMonitorSelectorNilUsesHelmValues=false \
 #  --set prometheus.prometheusSpec.serviceMonitorSelector.matchExpressions[0].key=k8s-app \
