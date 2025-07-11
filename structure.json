@@ -119,10 +119,16 @@
       "path": "helm",
       "title": "Lab-24: Helm",
       "description": "Kubernetes Helm"
-    }{
+    },
+    {
       "path": "prometheus",
       "title": "Lab-25: Prometheus",
       "description": "Kubernetes Prometheus"
+    },
+    {
+      "path": "istio-installation-istioctl",
+      "title": "Lab-26: Istio Installation with Istioctl",
+      "description": "Kubernetes Istio Installation with Istioctl"
     }
   ]
 }
