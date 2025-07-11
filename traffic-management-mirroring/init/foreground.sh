@@ -32,10 +32,4 @@ while ! kubectl get pods | grep -w "Running"; do echo -n "."; sleep 1; done
 clear
 echo "Scenario is ready"
 
-
-kubectl apply -f /tmp/prometheus.yaml
-kubectl apply -f /tmp/grafana.yaml
-kubectl apply -f /tmp/kiali.yaml
-
-kubectl -n istio-system delete svc kiali
-kubectl -n istio-system expose pod $(kubectl -n istio-system get pod -l app.kubernetes.io/name=kiali -o jsonpath='{.items[*].metadata.name}') --type=NodePort --name=kialiport --target-port=20001 --port=20001
+source /tmp/assets-install.sh
