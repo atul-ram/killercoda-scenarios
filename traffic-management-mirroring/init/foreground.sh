@@ -31,5 +31,3 @@ while ! kubectl get pods | grep -w "Running"; do echo -n "."; sleep 1; done
 
 clear
 echo "Scenario is ready"
-
-source /tmp/assets-install.sh

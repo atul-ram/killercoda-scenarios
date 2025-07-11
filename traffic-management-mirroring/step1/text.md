@@ -1,5 +1,7 @@
 
-- [Click here to open the kiali in a new tab 30000]({{TRAFFIC_HOST1_30001}})
+Exec /my/location/assets-install.sh {{exec}}
+
+
 
 There are two deployments installed in the Kubernetes cluster:
 - notification-service-v1
