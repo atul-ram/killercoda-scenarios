@@ -5,6 +5,16 @@
 kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/prometheus.yaml 
 ```{{ exec }}
 
+
+```
+kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/grafana.yaml
+```{{ exec }}
+
+```
+kubectl apply -f https://raw.githubusercontent.com/atul-ram/killercoda-scenarios/refs/heads/main/traffic-management-mirroring/assets/kiali.yaml
+```{{ exec }}
+
+
 There are two deployments installed in the Kubernetes cluster:
 - notification-service-v1
 - notification-service-v2
