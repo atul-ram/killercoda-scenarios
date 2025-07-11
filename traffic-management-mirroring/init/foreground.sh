@@ -32,6 +32,12 @@ while ! kubectl get pods | grep -w "Running"; do echo -n "."; sleep 1; done
 clear
 echo "Scenario is ready"
 
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/prometheus.yaml
+# kubectl -n istio-system delete svc prometheus
+# kubectl -n istio-system expose pod $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[*].metadata.name}') --type=NodePort --name=prometheusport --target-port=9090 --port=9090
+
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.18/samples/addons/kiali.yaml
 
-# kubectl -n istio-system  patch svc kiali -p '{"spec": {"type": "NodePort", "ports": [{"port": 20001, "nodePort": 20001}]}}'
+kubectl -n istio-system wait --for=condition=ready pod -l app.kubernetes.io/name=kiali --timeout=120s
+kubectl -n istio-system delete svc kiali
+kubectl -n istio-system expose pod $(kubectl -n istio-system get pod -l app.kubernetes.io/name=kiali -o jsonpath='{.items[*].metadata.name}') --type=NodePort --name=kialiport --target-port=20001 --port=20001
