@@ -1,3 +1,6 @@
+
+- [Click here to open the kiali in a new tab 30000]({{TRAFFIC_HOST1_30000}})
+
 There are two deployments installed in the Kubernetes cluster:
 - notification-service-v1
 - notification-service-v2
