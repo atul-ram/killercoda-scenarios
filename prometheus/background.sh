@@ -8,8 +8,9 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
     --set grafana.adminPassword=a \
     --set grafana.adminUser=a
 
-sleep 2
-kubectl wait --for=condition=ready  pod --all -n default
+sleep 2;
+
+kubectl wait --for=condition=ready  --timeout=80s pod --all -n default
 
 kubectl patch svc prometheus-grafana -p '{"spec": {"type": "NodePort", "ports": [{"port": 80, "nodePort": 30000}]}}'
 
