@@ -16,6 +16,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure-Samples/aks-store-demo/
 ```{{exec}}
 
 
+First, deploy a test pod outside the mesh, in the default namespace, to simulate an external client:
 
 ```bash
 
@@ -42,12 +43,16 @@ EOF
 
 ```{{exec}}
 
+Once the pod is running, try sending a request to the store-front service:
+
+Run the following command to get the name of the test pod.
+
 ```bash
 CURL_POD_NAME="$(kubectl get pod -l app=curl -o jsonpath="{.items[0].metadata.name}")"
 kubectl exec -it ${CURL_POD_NAME} -- curl -IL store-front.default.svc.cluster.local:80
 ```{{exec}}
 
-
+Now, enforce strict mTLS for all services in the namespace:
 
 ```bash
 kubectl apply  -f - <<EOF
