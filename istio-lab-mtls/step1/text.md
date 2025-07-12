@@ -55,6 +55,13 @@ while [[ -z "${CURL_POD_NAME}" || "$(kubectl get pod ${CURL_POD_NAME} -o jsonpat
   CURL_POD_NAME="$(kubectl get pod -l app=curl -o jsonpath="{.items[0].metadata.name}")"
 done
 kubectl exec -it ${CURL_POD_NAME} -- curl -IL store-front.default.svc.cluster.local:80
+
+kubectl exec -it tester -- \
+    bash -c 'for i in {1..2}; \
+                do curl -s -X POST http://store-front.default.svc.cluster.local; \
+                echo; \
+            done;'
+
 ```{{exec}}
 
 Now, enforce strict mTLS for all services in the namespace:
@@ -74,8 +81,13 @@ EOF
 
 
 ```bash
+kubectl exec -it tester -- \
+    bash -c 'for i in {1..2}; \
+                do curl -s -X POST http://store-front.default.svc.cluster.local; \
+                echo; \
+            done;'
 
-kubectl exec -it ${CURL_POD_NAME} -- curl -IL store-front.default.svc.cluster.local:80
+# kubectl exec -it ${CURL_POD_NAME} -- curl -IL store-front.default.svc.cluster.local:80
 
 ```{{exec}}
 
