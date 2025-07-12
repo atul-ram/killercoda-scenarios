@@ -49,6 +49,11 @@ Run the following command to get the name of the test pod.
 
 ```bash
 CURL_POD_NAME="$(kubectl get pod -l app=curl -o jsonpath="{.items[0].metadata.name}")"
+while [[ -z "${CURL_POD_NAME}" || "$(kubectl get pod ${CURL_POD_NAME} -o jsonpath='{.status.phase}')" != "Running" ]]; do
+  echo "Waiting for curl pod to be ready..."
+  sleep 2
+  CURL_POD_NAME="$(kubectl get pod -l app=curl -o jsonpath="{.items[0].metadata.name}")"
+done
 kubectl exec -it ${CURL_POD_NAME} -- curl -IL store-front.default.svc.cluster.local:80
 ```{{exec}}
 
@@ -56,7 +61,7 @@ Now, enforce strict mTLS for all services in the namespace:
 
 ```bash
 kubectl apply  -f - <<EOF
-apiVersion: security.istio.io/v1
+apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
 metadata:
   name: pets-mtls
@@ -71,6 +76,7 @@ EOF
 ```bash
 
 kubectl exec -it ${CURL_POD_NAME} -- curl -IL store-front.default.svc.cluster.local:80
+
 ```{{exec}}
 
 This time, the request fails because the store-front service now rejects plaintext connections.
@@ -101,15 +107,15 @@ spec:
 EOF
 ```{{exec}}
 
-Once it’s running, get its name:
+Once it’s running, get its name
 
 ``` 
-CURL_INSIDE_POD="$(kubectl get pod -n pets -l app=curl -o jsonpath="{.items[0].metadata.name}")"
+CURL_INSIDE_POD="$(kubectl get pod -l app=curl -o jsonpath="{.items[0].metadata.name}")"
 ```{{exec}}
 
 Then, try the request again:
 
 ```
-kubectl exec -it ${CURL_INSIDE_POD} -n pets -- curl -IL store-front.pets.svc.cluster.local:80
+kubectl exec -it ${CURL_INSIDE_POD} -- curl -IL store-front.pets.svc.cluster.local:80
 
 ```{{exec}}
