@@ -1,11 +1,26 @@
 {
-  "title": "Traffic Management - Traffic Mirroring",
-  "description": "Practice configuring Istio to send a copy of live traffic to a mirrored service.",
+  "title": "Traffic Management - mtls",
+  "description": "Practice configuring Istio to enable https and mtls.",
   "details": {
     "steps": [
       {
         "title": "Intro",
         "text": "step1/text.md"
+      },
+      {
+        "title": "Configure curl application",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Test the traffic http",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Test the traffic https",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
       }
     ],
     "finish": {
